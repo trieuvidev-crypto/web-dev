@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(express.static('.'));
 
 // Cấu hình Telegram Bot
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8256736467:AAFPgcrPF4YcLNG36emFCf1lPlW5Mqebirc';
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '93372553';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8284744616:AAGy9fj4UxxuIYi4DZwApYjDceDN-teP8Vs';
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '8284744616';
 
 // Hàm gửi tin nhắn Telegram
 async function sendTelegramMessage(message) {
@@ -143,10 +143,10 @@ app.listen(PORT, () => {
     console.log(`🌐 Open http://localhost:${PORT} in your browser`);
     console.log(`🤖 Telegram bot is ready to receive notifications`);
     
-    if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === '8256736467:AAFPgcrPF4YcLNG36emFCf1lPlW5Mqebirc') {
+    if (!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN === '8284744616:AAGy9fj4UxxuIYi4DZwApYjDceDN-teP8Vs') {
         console.warn('⚠️  WARNING: Please set TELEGRAM_BOT_TOKEN in .env file');
     }
-    if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === '93372553') {
+    if (!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID === '8284744616') {
         console.warn('⚠️  WARNING: Please set TELEGRAM_CHAT_ID in .env file');
     }
 });
