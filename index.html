@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDev Pro - Dịch vụ Cheat Game & Thiết kế Chuyên nghiệp</title>
+    <meta name="description" content="Cung cấp dịch vụ cheat game, thiết kế đồ họa, website, source code chất lượng. Đội ngũ chuyên gia 5+ năm kinh nghiệm.">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset và biến CSS */
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5b4fcf;
+            --primary-light: #a29bfe;
+            --secondary: #00cec9;
+            --secondary-dark: #00b894;
+            --dark: #2d3436;
+            --light: #f8f9fa;
+            --gray: #636e72;
+            --success: #00b894;
+            --danger: #d63031;
+            --warning: #fdcb6e;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 30px 60px rgba(0, 0, 0, 0.15);
+            --radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Background động với particles */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: transparent;
+        }
+        
+        /* Container chính */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation với animation */
+        .header {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo i {
+            color: var(--secondary);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 10px 0;
+            transition: var(--transition);
+            opacity: 0.9;
+        }
+        
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section với animation mượt */
+        .hero {
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Button với hover effect */
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.6);
+        }
+        
+        .btn i {
+            margin-right: 10px;
+        }
+        
+        /* Services Section với card animation */
+        .services {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 800;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 60px;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 50px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(108, 92, 231, 0.3);
+        }
+        
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .service-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+        
+        /* Contact Section với form animation */
+        .contact {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .contact-form {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+            color: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Message styles */
+        .message {
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .message.success {
+            background: rgba(0, 184, 148, 0.2);
+            color: #00ffd4;
+            border: 1px solid rgba(0, 184, 148, 0.3);
+            display: block;
+        }
+        
+        .message.error {
+            background: rgba(214, 48, 49, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(214, 48, 49, 0.3);
+            display: block;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 80px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links a::after {
+            content: '•';
+            color: var(--primary);
+            margin-left: 40px;
+        }
+        
+        .footer-links a:last-child::after {
+            display: none;
+        }
+        
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            padding: 50px;
+            border-radius: var(--radius);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive cho điện thoại */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .contact-container {
+                padding: 30px 20px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-links a::after {
+                display: none;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Animation cho các element khi scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background particles -->
+    <div id="particles-js"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    GameDev Pro
+                </a>
+                <div class="nav-links">
+                    <a href="#home">Trang chủ</a>
+                    <a href="#services">Dịch vụ</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Liên hệ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content animate-on-scroll">
+                <h1><span>Cheat Game</span> Chuyên Nghiệp & <span>Thiết Kế</span> Sáng Tạo</h1>
+                <p>Cung cấp giải pháp cheat game đa nền tảng, thiết kế đồ họa sáng tạo, phát triển website và source code chất lượng cao với đội ngũ chuyên gia 5+ năm kinh nghiệm.</p>
+                <a href="#contact" class="btn">
+                    <i class="fas fa-paper-plane"></i> Liên hệ ngay
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Dịch vụ của chúng tôi</h2>
+            <p class="section-subtitle animate-on-scroll">Giải pháp toàn diện cho mọi nhu cầu của game thủ và nhà phát triển</p>
+            
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Cheat Game</h3>
+                    <p>Phát triển cheat game cho PUBG, Mobile Legends, Free Fire, Valorant, CS:GO với tính năng đa dạng và bảo mật cao.</p>
+                </div>
+                
+                <div class="service-card animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Thiết kế đồ họa</h3>
+                    <p>Thiết kế logo, banner, UI/UX, hình ảnh quảng cáo chuyên nghiệp, sáng tạo cho game và ứng dụng.</p>
+                </div>
+                
+                <div class="service-card animate-on-scroll" style="animation-delay: 0.4s;">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Thiết kế Website</h3>
+                    <p>Phát triển website responsive, tối ưu SEO, tốc độ tải nhanh với công nghệ hiện đại nhất.</p>
+                </div>
+                
+                <div class="service-card animate-on-scroll" style="animation-delay: 0.6s;">
+                    <div class="service-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Source Code</h3>
+                    <p>Cung cấp source code cheat game, tool tự động hóa, bot và phần mềm được tối ưu và bảo mật.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Liên hệ với chúng tôi</h2>
+            <p class="section-subtitle animate-on-scroll">Để lại thông tin, chúng tôi sẽ liên hệ lại trong vòng 24 giờ</p>
+            
+            <div class="contact-container animate-on-scroll">
+                <form id="contactForm" class="contact-form">
+                    <div id="formMessage" class="message"></div>
+                    
+                    <div class="form-group">
+                        <label for="name">Họ và tên *</label>
+                        <input type="text" id="name" name="name" required placeholder="Nhập họ và tên của bạn">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Nhập số điện thoại của bạn">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập email của bạn">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Địa chỉ</label>
+                        <input type="text" id="address" name="address" placeholder="Nhập địa chỉ của bạn">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Dịch vụ quan tâm *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Chọn dịch vụ</option>
+                            <option value="cheat-game">Cheat Game</option>
+                            <option value="graphic-design">Thiết kế đồ họa</option>
+                            <option value="web-design">Thiết kế website</option>
+                            <option value="source-code">Source Code</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Nội dung tin nhắn</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Nhập nội dung tin nhắn của bạn..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Gửi thông tin
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo" style="color: white; margin-bottom: 30px; display: inline-block; font-size: 2rem;">
+                <i class="fas fa-gamepad"></i>
+                GameDev Pro
+            </a>
+            <p style="max-width: 600px; margin: 0 auto 40px; color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
+                Cung cấp dịch vụ cheat game, thiết kế đồ họa, website và source code chất lượng cao với đội ngũ chuyên gia giàu kinh nghiệm.
+            </p>
+            <div class="footer-links">
+                <a href="#home">Trang chủ</a>
+                <a href="#services">Dịch vụ</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Liên hệ</a>
+            </div>
+            <p style="margin-top: 50px; color: rgba(255, 255, 255, 0.5);">
+                &copy; 2024 GameDev Pro. Tất cả các quyền được bảo lưu.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal thành công -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div style="font-size: 80px; color: var(--success); margin-bottom: 20px; animation: pulse 2s infinite;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 style="margin-bottom: 15px; color: white; font-size: 2.5rem;">Thành công!</h2>
+            <p style="margin-bottom: 30px; color: rgba(255, 255, 255, 0.8); font-size: 1.2rem;">
+                Thông tin của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ với bạn sớm nhất!
+            </p>
+            <button onclick="closeModal()" class="btn" style="background: var(--success); margin-top: 20px;">Đóng</button>
+        </div>
+    </div>
+
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Khởi tạo particles background
+        document.addEventListener('DOMContentLoaded', function() {
+            // Khởi tạo particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: "#ffffff"
+                    },
+                    shape: {
+                        type: "circle",
+                        stroke: {
+                            width: 0,
+                            color: "#000000"
+                        }
+                    },
+                    opacity: {
+                        value: 0.3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#6c5ce7",
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "grab"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 0.5
+                            }
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+            
+            // Animation khi scroll
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('animated');
+                    }
+                });
+            };
+            
+            // Gọi hàm khi load và scroll
+            window.addEventListener('load', animateOnScroll);
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Thu thập thông tin visitor
+            const visitorInfo = {
+                timestamp: new Date().toISOString(),
+                pageUrl: window.location.href,
+                referrer: document.referrer || 'Direct',
+                screenResolution: `${screen.width}x${screen.height}`,
+                language: navigator.language,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                cookieEnabled: navigator.cookieEnabled,
+                doNotTrack: navigator.doNotTrack || 'unspecified'
+            };
+            
+            // Gửi thông tin tracking khi trang được tải
+            fetch('/api/track-visitor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(visitorInfo)
+            }).catch(error => console.log('Tracking error:', error));
+            
+            // Xử lý form submit
+            const form = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="loading"></span> Đang gửi...';
+                submitBtn.disabled = true;
+                formMessage.style.display = 'none';
+                
+                // Thu thập dữ liệu form
+                const formData = {
+                    name: document.getElementById('name').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    address: document.getElementById('address').value.trim(),
+                    service: document.getElementById('service').value,
+                    message: document.getElementById('message').value.trim(),
+                    // Thêm thông tin visitor
+                    ...visitorInfo
+                };
+                
+                try {
+                    // Gửi dữ liệu đến backend
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        // Hiển thị modal thành công
+                        document.getElementById('successModal').style.display = 'flex';
+                        form.reset();
+                    } else {
+                        formMessage.innerHTML = '<div class="error">❌ Có lỗi xảy ra. Vui lòng thử lại sau.</div>';
+                        formMessage.className = 'message error';
+                        formMessage.style.display = 'block';
+                    }
+                } catch (error) {
+                    formMessage.innerHTML = '<div class="error">❌ Lỗi kết nối. Vui lòng kiểm tra lại mạng.</div>';
+                    formMessage.className = 'message error';
+                    formMessage.style.display = 'block';
+                    console.error('Error:', error);
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        });
+        
+        // Đóng modal
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            modal.style.animation = 'fadeOut 0.3s ease';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                modal.style.animation = '';
+            }, 300);
+        }
+        
+        // Đóng modal khi click bên ngoài
+        window.onclick = function(event) {
+            const modal = document.getElementById('successModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+        
+        // Smooth scroll cho navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
