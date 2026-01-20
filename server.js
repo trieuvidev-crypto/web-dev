@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(express.static('.'));
 
 // Cấu hình Telegram Bot
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || 'YOUR_BOT_TOKEN_HERE';
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || 'YOUR_CHAT_ID_HERE';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8256736467:AAFPgcrPF4YcLNG36emFCf1lPlW5Mqebirc';
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '93372553';
 
 // Hàm gửi tin nhắn Telegram
 async function sendTelegramMessage(message) {
